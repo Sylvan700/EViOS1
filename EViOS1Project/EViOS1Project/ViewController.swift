@@ -16,6 +16,7 @@ class ViewController: UIViewController
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var constrainEyevsSafeView: NSLayoutConstraint!
+    @IBOutlet var loadingAnim: UIActivityIndicatorView!
     
     var eyeShow : Bool = false
     var loginString : String = ""
@@ -72,6 +73,8 @@ class ViewController: UIViewController
     @IBAction func loginButton(_ sender: Any)
     {
         
+        fakeConnection()
+        
         let alert : UIAlertController
         
         loginString = loginTextField.text ?? ""
@@ -99,6 +102,25 @@ class ViewController: UIViewController
         
         present(alert, animated: true, completion: nil)
         
+    }
+
+    func fakeConnection()
+    {
+        DispatchQueue.global().async
+        {
+            DispatchQueue.main.async {
+                //let loadingObject : UIActivityIndicatorView = UIActivityIndicatorView()
+                self.loadingAnim.startAnimating()
+                
+            }
+            sleep(3)
+            DispatchQueue.main.async {
+                
+                self.loadingAnim.stopAnimating()
+                
+            }
+            
+        }
     }
     
 }

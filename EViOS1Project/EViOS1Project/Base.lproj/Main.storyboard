@@ -86,7 +86,7 @@
                             <constraint firstItem="uc1-UD-GmQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ORP-lN-cTi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x17-WJ-GlM" secondAttribute="trailing" constant="83" id="Pjv-3C-XRw"/>
                             <constraint firstItem="tQl-O2-YL9" firstAttribute="top" secondItem="byc-ry-LnH" secondAttribute="bottom" constant="8" symbolic="YES" id="Pwd-jW-GIa"/>
-                            <constraint firstItem="mK2-iu-Gaq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uc1-UD-GmQ" secondAttribute="bottom" constant="20" id="SCu-ON-q00"/>
+                            <constraint firstItem="mK2-iu-Gaq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uc1-UD-GmQ" secondAttribute="bottom" constant="8" symbolic="YES" id="SCu-ON-q00"/>
                             <constraint firstItem="mK2-iu-Gaq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Vxu-US-EGX"/>
                             <constraint firstItem="bd7-b3-p3D" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="X16-7o-GeO"/>
                             <constraint firstItem="DjP-Ms-kmU" firstAttribute="leading" secondItem="x17-WJ-GlM" secondAttribute="trailing" constant="8" symbolic="YES" id="akB-Cu-3gE"/>

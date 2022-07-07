@@ -19,6 +19,7 @@ class ViewController: UIViewController
     @IBOutlet var loadingAnim: UIActivityIndicatorView!
     
     var eyeShow : Bool = false
+    var switchStatut : Bool
     var loginString : String = ""
     var passwordString : String = ""
     
@@ -86,6 +87,7 @@ class ViewController: UIViewController
     {
         DispatchQueue.global().async
         {
+        
             DispatchQueue.main.async {
                 //let loadingObject : UIActivityIndicatorView = UIActivityIndicatorView()
                 self.loadingAnim.startAnimating()
@@ -128,6 +130,7 @@ class ViewController: UIViewController
             }
             
         }
+
     }
     
 }

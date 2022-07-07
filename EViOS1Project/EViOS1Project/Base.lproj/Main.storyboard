@@ -67,7 +67,7 @@
                                 <color key="onTintColor" systemColor="systemGreenColor"/>
                                 <color key="thumbTintColor" white="1" alpha="0.84979005523075335" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </switch>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="BgU-8g-ovw">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="BgU-8g-ovw">
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKq-SM-JLt">
@@ -116,9 +116,21 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bd7-b3-p3D" secondAttribute="trailing" constant="20" id="pfd-ba-tW0"/>
                             <constraint firstItem="dKq-SM-JLt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pil-7i-khR"/>
                             <constraint firstItem="byc-ry-LnH" firstAttribute="top" secondItem="x17-WJ-GlM" secondAttribute="bottom" constant="12.5" id="rSi-j7-9ql"/>
+                            <constraint firstItem="uc1-UD-GmQ" firstAttribute="height" secondItem="M9Z-17-vUg" secondAttribute="height" multiplier="0.4" id="uBi-cQ-9EK"/>
                             <constraint firstItem="M9Z-17-vUg" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="2.06039" id="ux5-b6-9BR"/>
                             <constraint firstItem="M9Z-17-vUg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="z6N-7M-Nx4"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="uBi-cQ-9EK"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="lL7-kc-pqi"/>
+                                <include reference="uBi-cQ-9EK"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="constrainEyevsSafeView" destination="bLh-fv-5fV" id="KC8-un-AQ8"/>

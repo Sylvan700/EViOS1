@@ -16,8 +16,10 @@ class ViewController: UIViewController
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var constrainEyevsSafeView: NSLayoutConstraint!
+    @IBOutlet var loadingAnim: UIActivityIndicatorView!
     
     var eyeShow : Bool = false
+    var switchStatut : Bool
     var loginString : String = ""
     var passwordString : String = ""
     
@@ -28,7 +30,7 @@ class ViewController: UIViewController
         // Flip the switch
         switchMain.transform = CGAffineTransform(scaleX: -1, y: 1)
         
-        // Close Keyboard when touch outside the keyboard
+        // Close Keyboard when  a touch outside the keyboard is done
         let tapOnView = UITapGestureRecognizer(target: view, action:
         #selector(UIView.endEditing))
         view.addGestureRecognizer(tapOnView)
@@ -40,8 +42,13 @@ class ViewController: UIViewController
     
     override func viewDidAppear(_ animated: Bool)
     {
-        // Create a circle around the profil image
-        profilIcon.layer.cornerRadius = profilIcon.frame.size.width / 2
+        
+        // Create a circle around the profile image
+        if UIInterfaceOrientation.portrait.isPortrait
+        {
+            profilIcon.layer.cornerRadius = profilIcon.frame.size.width / 2
+        }
+        
     }
 
     @IBAction func touchEye(_ sender: Any)
@@ -72,42 +79,69 @@ class ViewController: UIViewController
     @IBAction func loginButton(_ sender: Any)
     {
         
-        let alert : UIAlertController
+        fakeConnection()
         
-        loginString = loginTextField.text ?? ""
-        passwordString = passwordTextField.text ?? ""
-        
-        if loginTextField.text != nil && passwordTextField.text != nil && loginString.contains("@") && passwordString.count >= 4
+    }
+
+    func fakeConnection()
+    {
+        DispatchQueue.global().async
         {
+        
+            DispatchQueue.main.async {
+                //let loadingObject : UIActivityIndicatorView = UIActivityIndicatorView()
+                self.loadingAnim.startAnimating()
+                
+            }
+            sleep(3)
+            DispatchQueue.main.async {
+                
+                let alert : UIAlertController
+                
+                self.loginString = self.loginTextField.text ?? ""
+                self.passwordString = self.passwordTextField.text ?? ""
+                
+                self.loadingAnim.stopAnimating()
+                
+                if self.loginTextField.text != nil && self.passwordTextField.text != nil && self.loginString.contains("@") && self.passwordString.count >= 4
+                {
+                    if self.switchMain.isOn
+                    {
+                        alert  = UIAlertController(title: "Bienvenue \(self.loginString) !", message: "Vous vous etes inscris à la newsletter", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Merci!", style: .default, handler: { action in print("TOUCH merci with news etter")}))
+                    }
+                    else
+                    {
+                        alert  = UIAlertController(title: "Bienvenue \(self.loginString) !", message: "Vous ne vous etes pas inscris à la news letter", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Merci!", style: .default, handler: { action in print("TOUCH merci no newsletter")}))
+                    }
+                }
+                else
+                {
+                    alert  = UIAlertController(title: "ERROR", message: "Une  des conditions n'est pas respectée", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in print("TOUCH OK")}))
+                    
+                    self.loginString = ""
+                    self.passwordString = ""
+                }
+                
+                self.present(alert, animated: true, completion: nil)
+                
+            }
             
-            if switchMain.isOn
-            {
-                alert  = UIAlertController(title: "Bienvenue \(loginString) !", message: "Vous vous etes inscris à la news letter", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Merci!", style: .default, handler: { action in print("TOUCH merci with news letter")}))
-            }
-            else
-            {
-                alert  = UIAlertController(title: "Bienvenue \(loginString) !", message: "Vous ne vous etes pas inscris à la news letter", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Merci!", style: .default, handler: { action in print("TOUCH merci no news letter")}))
-            }
         }
-        else
-        {
-            alert  = UIAlertController(title: "ERROR", message: "Une  des conditions n'est pas respectée", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in print("TOUCH OK")}))
-        }
-        
-        present(alert, animated: true, completion: nil)
-        
+
     }
     
 }
 
 // Close keyboard when "Enter" is pressed
-extension ViewController: UITextFieldDelegate {
-func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    view.endEditing(true)
-    return true
-}
+extension ViewController: UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        view.endEditing(true)
+        return true
+    }
 }
 

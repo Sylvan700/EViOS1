@@ -35,7 +35,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bd7-b3-p3D">
                                 <rect key="frame" x="20" y="318" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="username"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x17-WJ-GlM">
                                 <rect key="frame" x="20" y="360" width="311" height="34"/>
@@ -64,9 +64,12 @@
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tQl-O2-YL9">
                                 <rect key="frame" x="182.5" y="432.5" width="51" height="31"/>
-                                <color key="onTintColor" white="0.66666666666666663" alpha="0.25237703639150455" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="onTintColor" systemColor="systemGreenColor"/>
                                 <color key="thumbTintColor" white="1" alpha="0.84979005523075335" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </switch>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="BgU-8g-ovw">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKq-SM-JLt">
                                 <rect key="frame" x="83" y="796" width="248" height="50"/>
                                 <constraints>
@@ -86,6 +89,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="BgU-8g-ovw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6OL-Zo-Pf7"/>
                             <constraint firstItem="bd7-b3-p3D" firstAttribute="top" secondItem="mK2-iu-Gaq" secondAttribute="bottom" constant="8" symbolic="YES" id="9UH-nZ-ukX"/>
                             <constraint firstItem="0aS-Us-Kyq" firstAttribute="centerY" secondItem="x17-WJ-GlM" secondAttribute="centerY" id="9sY-qo-9g9"/>
                             <constraint firstItem="uc1-UD-GmQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="HPd-K6-xaL"/>
@@ -106,18 +110,32 @@
                             <constraint firstItem="tQl-O2-YL9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="goN-XL-lpx"/>
                             <constraint firstItem="byc-ry-LnH" firstAttribute="centerX" secondItem="tQl-O2-YL9" secondAttribute="centerX" id="god-9x-6oC"/>
                             <constraint firstItem="M9Z-17-vUg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hfc-ho-y5Z"/>
+                            <constraint firstItem="BgU-8g-ovw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ieS-yg-sLT"/>
                             <constraint firstItem="uc1-UD-GmQ" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.4" id="lL7-kc-pqi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mK2-iu-Gaq" secondAttribute="trailing" symbolic="YES" id="oDv-gd-KyN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bd7-b3-p3D" secondAttribute="trailing" constant="20" id="pfd-ba-tW0"/>
                             <constraint firstItem="dKq-SM-JLt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pil-7i-khR"/>
                             <constraint firstItem="byc-ry-LnH" firstAttribute="top" secondItem="x17-WJ-GlM" secondAttribute="bottom" constant="12.5" id="rSi-j7-9ql"/>
+                            <constraint firstItem="uc1-UD-GmQ" firstAttribute="height" secondItem="M9Z-17-vUg" secondAttribute="height" multiplier="0.4" id="uBi-cQ-9EK"/>
                             <constraint firstItem="M9Z-17-vUg" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="2.06039" id="ux5-b6-9BR"/>
                             <constraint firstItem="M9Z-17-vUg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="z6N-7M-Nx4"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="uBi-cQ-9EK"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="lL7-kc-pqi"/>
+                                <include reference="uBi-cQ-9EK"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="constrainEyevsSafeView" destination="bLh-fv-5fV" id="KC8-un-AQ8"/>
                         <outlet property="eyeButton" destination="0aS-Us-Kyq" id="HhZ-WZ-8Tm"/>
+                        <outlet property="loadingAnim" destination="BgU-8g-ovw" id="C3J-Do-hZq"/>
                         <outlet property="loginTextField" destination="bd7-b3-p3D" id="03D-gN-wlj"/>
                         <outlet property="passwordTextField" destination="x17-WJ-GlM" id="zkb-QW-uNy"/>
                         <outlet property="profilIcon" destination="uc1-UD-GmQ" id="F3U-41-JWI"/>
@@ -135,6 +153,9 @@
         <image name="user_icon" width="200" height="200"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

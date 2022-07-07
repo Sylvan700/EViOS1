@@ -7,13 +7,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
+class ViewController: UIViewController
+{
+    
+    @IBOutlet var switchMain: UISwitch!
+    @IBOutlet var profilIcon: UIImageView!
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        switchMain.transform = CGAffineTransform(scaleX: -1, y: 1)
     }
-
+    
+    override func viewDidAppear(_ animated: Bool)
+    {
+        profilIcon.layer.cornerRadius = profilIcon.frame.size.width / 2
+    }
 
 }
 

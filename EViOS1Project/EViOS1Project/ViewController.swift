@@ -18,6 +18,7 @@ class ViewController: UIViewController
     @IBOutlet var constrainEyevsSafeView: NSLayoutConstraint!
     
     var eyeShow : Bool = false
+    var switchStatut : Bool
     var loginString : String = ""
     var passwordString : String = ""
     
@@ -79,6 +80,7 @@ class ViewController: UIViewController
         
         if loginTextField.text != nil && passwordTextField.text != nil && loginString.contains("@") && passwordString.count >= 4
         {
+            switchStatut = switchMain.isOn
             
             if switchMain.isOn
             {
@@ -95,6 +97,9 @@ class ViewController: UIViewController
         {
             alert  = UIAlertController(title: "ERROR", message: "Une  des conditions n'est pas respectée", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in print("TOUCH OK")}))
+            
+            loginString = ""
+            passwordString = ""
         }
         
         present(alert, animated: true, completion: nil)

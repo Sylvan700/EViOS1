@@ -18,6 +18,8 @@ class ViewController: UIViewController
     @IBOutlet var constrainEyevsSafeView: NSLayoutConstraint!
     
     var eyeShow : Bool = false
+    var loginString : String = ""
+    var passwordString : String = ""
     
     override func viewDidLoad()
     {
@@ -65,9 +67,43 @@ class ViewController: UIViewController
         }
         
     }
+    
+    // If the login and password conform to the rule, a positive alert is shown, if not an error alert is show instead. Differents alerts are shown depending of if the user is subscribed to the news letter or not.
+    @IBAction func loginButton(_ sender: Any)
+    {
+        
+        let alert : UIAlertController
+        
+        loginString = loginTextField.text ?? ""
+        passwordString = passwordTextField.text ?? ""
+        
+        if loginTextField.text != nil && passwordTextField.text != nil && loginString.contains("@") && passwordString.count >= 4
+        {
+            
+            if switchMain.isOn
+            {
+                alert  = UIAlertController(title: "Bienvenue \(loginString) !", message: "Vous vous etes inscris à la news letter", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Merci!", style: .default, handler: { action in print("TOUCH merci with news letter")}))
+            }
+            else
+            {
+                alert  = UIAlertController(title: "Bienvenue \(loginString) !", message: "Vous ne vous etes pas inscris à la news letter", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Merci!", style: .default, handler: { action in print("TOUCH merci no news letter")}))
+            }
+        }
+        else
+        {
+            alert  = UIAlertController(title: "ERROR", message: "Une  des conditions n'est pas respectée", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in print("TOUCH OK")}))
+        }
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
 }
 
-// Close keyboard when enter is pressed
+// Close keyboard when "Enter" is pressed
 extension ViewController: UITextFieldDelegate {
 func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     view.endEditing(true)

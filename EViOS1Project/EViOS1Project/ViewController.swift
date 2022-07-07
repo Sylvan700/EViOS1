@@ -19,7 +19,7 @@ class ViewController: UIViewController
     @IBOutlet var loadingAnim: UIActivityIndicatorView!
     
     var eyeShow : Bool = false
-    var switchStatut : Bool
+    var switchStatut : Bool = false
     var loginString : String = ""
     var passwordString : String = ""
     

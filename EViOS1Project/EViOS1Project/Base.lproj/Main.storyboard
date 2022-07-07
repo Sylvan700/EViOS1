@@ -35,12 +35,12 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bd7-b3-p3D">
                                 <rect key="frame" x="20" y="318" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="username"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x17-WJ-GlM">
                                 <rect key="frame" x="20" y="360" width="311" height="34"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inscription à la newsletter:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byc-ry-LnH">
                                 <rect key="frame" x="115" y="406.5" width="184.5" height="18"/>
@@ -50,13 +50,19 @@
                                 <color key="shadowColor" white="0.66666666669999997" alpha="0.25237703639999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="1" height="-1"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="eye_on_icon" translatesAutoresizingMaskIntoConstraints="NO" id="DjP-Ms-kmU">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0aS-Us-Kyq">
                                 <rect key="frame" x="339" y="352" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="DjP-Ms-kmU" secondAttribute="height" multiplier="1:1" id="N5d-em-27y"/>
+                                    <constraint firstAttribute="width" secondItem="0aS-Us-Kyq" secondAttribute="height" multiplier="1:1" id="2D9-hN-Y4k"/>
                                 </constraints>
-                            </imageView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tQl-O2-YL9">
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="EyeButton" image="eye_on_icon"/>
+                                <connections>
+                                    <action selector="touchEye:" destination="BYZ-38-t0r" eventType="touchUpInside" id="utp-dR-pIq"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tQl-O2-YL9">
                                 <rect key="frame" x="182.5" y="432.5" width="51" height="31"/>
                                 <color key="onTintColor" white="0.66666666666666663" alpha="0.25237703639150455" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="thumbTintColor" white="1" alpha="0.84979005523075335" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -78,7 +84,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bd7-b3-p3D" firstAttribute="top" secondItem="mK2-iu-Gaq" secondAttribute="bottom" constant="8" symbolic="YES" id="9UH-nZ-ukX"/>
-                            <constraint firstItem="DjP-Ms-kmU" firstAttribute="centerY" secondItem="x17-WJ-GlM" secondAttribute="centerY" id="9sY-qo-9g9"/>
+                            <constraint firstItem="0aS-Us-Kyq" firstAttribute="centerY" secondItem="x17-WJ-GlM" secondAttribute="centerY" id="9sY-qo-9g9"/>
                             <constraint firstItem="uc1-UD-GmQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="HPd-K6-xaL"/>
                             <constraint firstAttribute="bottom" secondItem="dKq-SM-JLt" secondAttribute="bottom" constant="50" id="HgR-1U-eOp"/>
                             <constraint firstItem="dKq-SM-JLt" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="MZQ-pD-8Ox"/>
@@ -89,8 +95,8 @@
                             <constraint firstItem="mK2-iu-Gaq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uc1-UD-GmQ" secondAttribute="bottom" constant="8" symbolic="YES" id="SCu-ON-q00"/>
                             <constraint firstItem="mK2-iu-Gaq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Vxu-US-EGX"/>
                             <constraint firstItem="bd7-b3-p3D" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="X16-7o-GeO"/>
-                            <constraint firstItem="DjP-Ms-kmU" firstAttribute="leading" secondItem="x17-WJ-GlM" secondAttribute="trailing" constant="8" symbolic="YES" id="akB-Cu-3gE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DjP-Ms-kmU" secondAttribute="trailing" constant="25" id="bLh-fv-5fV"/>
+                            <constraint firstItem="0aS-Us-Kyq" firstAttribute="leading" secondItem="x17-WJ-GlM" secondAttribute="trailing" constant="8" symbolic="YES" id="akB-Cu-3gE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0aS-Us-Kyq" secondAttribute="trailing" constant="25" id="bLh-fv-5fV"/>
                             <constraint firstItem="x17-WJ-GlM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dNa-yw-dog"/>
                             <constraint firstItem="x17-WJ-GlM" firstAttribute="top" secondItem="bd7-b3-p3D" secondAttribute="bottom" constant="8" symbolic="YES" id="g4P-b0-thy"/>
                             <constraint firstItem="tQl-O2-YL9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gIr-lI-caj"/>
@@ -107,6 +113,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="constrainEyevsSafeView" destination="bLh-fv-5fV" id="KC8-un-AQ8"/>
+                        <outlet property="eyeButton" destination="0aS-Us-Kyq" id="HhZ-WZ-8Tm"/>
+                        <outlet property="loginTextField" destination="bd7-b3-p3D" id="03D-gN-wlj"/>
+                        <outlet property="passwordTextField" destination="x17-WJ-GlM" id="zkb-QW-uNy"/>
                         <outlet property="profilIcon" destination="uc1-UD-GmQ" id="F3U-41-JWI"/>
                         <outlet property="switchMain" destination="tQl-O2-YL9" id="t5v-Me-k1E"/>
                     </connections>
